@@ -1,5 +1,12 @@
 // Webhook NDG Community Council (mis à jour)
-const WEBHOOK_URL = "https://n8n.srv843989.hstgr.cloud/webhook/550c50cd-0f54-42b3-b750-7dabf877f47c";
+fetch(WEBHOOK_URL, {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({ message: text, lang: currentLang }),
+  mode: "cors"
+})
 
 const langTexts = {
   en: {
