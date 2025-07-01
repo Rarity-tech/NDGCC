@@ -1,5 +1,5 @@
 // Webhook NDG Community Council (mis à jour)
-const WEBHOOK_URL = "https://n8n.srv843989.hstgr.cloud/webhook/550c50cd-0f54-42b3-b750-7dabf877f47c";
+const WEBHOOK_URL = "https://n8n.srv843989.hstgr.cloud/webhook/1e3e5da5-8730-4fb2-a432-5a57b622bb71";
 
 const langTexts = {
   en: {
