@@ -1,5 +1,5 @@
 // Webhook NDG Community Council (mis à jour)
-fetch(WEBHOOK_URL, {
+fetch(WEBHOOK_URL, {https://n8n.srv843989.hstgr.cloud/webhook/550c50cd-0f54-42b3-b750-7dabf877f47c}
   method: "POST",
   headers: {
     "Content-Type": "application/json"
