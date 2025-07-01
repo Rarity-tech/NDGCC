@@ -1,24 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NDGCC Chatbot</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NDG Community Council Chat</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
 </head>
 <body>
-    <div id="top-bar">
-        <div id="language-toggle">
-            <button id="en-btn">English</button>
-            <button id="fr-btn">Français</button>
-        </div>
-        <button id="reset-btn">Reset chat</button>
+  <header class="header-chatgpt">
+    <div class="logo-title">
+      <div class="dgcc-logo" title="DGCC">
+        <!-- Logo DGCC SVG stylisé, à remplacer si besoin par un <img class="dgcc-logo-img" ...> -->
+        <svg viewBox="0 0 46 46" fill="none">
+          <circle cx="23" cy="23" r="22" fill="#fff" stroke="#b7b200" stroke-width="2.5"/>
+          <text x="50%" y="56%" text-anchor="middle" font-size="17" font-family="Inter, Arial" fill="#378137" font-weight="bold" dy=".3em" letter-spacing="2.5">DGCC</text>
+        </svg>
+      </div>
+      <div>
+        <div class="org-name">NDG COMMUNITY COUNCIL AI</div>
+        <div class="org-sub">Conseil communautaire NDG</div>
+      </div>
     </div>
-    <div id="chat-container"></div>
-    <form id="input-area">
-        <input type="text" id="user-input" placeholder="Type your message" autocomplete="off" required>
-        <button type="submit" id="send-btn">Send</button>
-    </form>
-    <script src="app.js"></script>
+    <div class="lang-switch">
+      <button id="btn-en" class="lang-btn active">English</button>
+      <button id="btn-fr" class="lang-btn">Français</button>
+    </div>
+  </header>
+  <div class="main-title" id="main-title">Hello! How can I assist you today?</div>
+  <div class="quick-questions">
+    <button class="quick-btn" data-preset="0">What services does the Community Council offer?</button>
+    <button class="quick-btn" data-preset="1">How can I get involved in local events?</button>
+  </div>
+  <section class="chat-window" id="chat-window">
+    <!-- Messages JS ici -->
+  </section>
+  <form id="chat-form" autocomplete="off" class="chat-form">
+    <input id="chat-input" type="text" placeholder="Type your message..." autocomplete="off" class="chat-input" maxlength="500" required>
+    <button type="submit" class="send-btn" aria-label="Send" id="send-btn">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+        <circle cx="12" cy="12" r="12" fill="#fff"/>
+        <path d="M7 13L17 8L12 17L11 13L7 13Z" fill="#b7b200"/>
+      </svg>
+    </button>
+  </form>
+  <script src="app.js"></script>
 </body>
 </html>
