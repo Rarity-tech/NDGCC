@@ -1,12 +1,5 @@
 // Webhook NDG Community Council (mis à jour)
-fetch(WEBHOOK_URL, {https://n8n.srv843989.hstgr.cloud/webhook/550c50cd-0f54-42b3-b750-7dabf877f47c}
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json"
-  },
-  body: JSON.stringify({ message: text, lang: currentLang }),
-  mode: "cors"
-})
+const WEBHOOK_URL = "https://n8n.srv843989.hstgr.cloud/webhook/550c50cd-0f54-42b3-b750-7dabf877f47c";
 
 const langTexts = {
   en: {
@@ -30,6 +23,7 @@ const langTexts = {
     sending: "Envoi en cours..."
   }
 };
+
 let currentLang = "en";
 const chatWindow = document.getElementById("chat-window");
 const chatForm = document.getElementById("chat-form");
@@ -37,6 +31,7 @@ const chatInput = document.getElementById("chat-input");
 const mainTitle = document.getElementById("main-title");
 
 function scrollToBottom() { chatWindow.scrollTop = chatWindow.scrollHeight; }
+
 function updateLanguage(lang) {
   currentLang = lang;
   document.getElementById("btn-en").classList.toggle("active", lang === "en");
@@ -47,11 +42,13 @@ function updateLanguage(lang) {
   });
   chatInput.placeholder = langTexts[lang].input;
 }
+
 document.getElementById("btn-en").onclick = () => updateLanguage("en");
 document.getElementById("btn-fr").onclick = () => updateLanguage("fr");
 document.querySelectorAll(".quick-btn").forEach((btn, i) => {
   btn.onclick = () => { sendMessage(langTexts[currentLang].presets[i]); };
 });
+
 function sendMessage(text) {
   addMessage(text, true);
   chatInput.value = "";
@@ -59,7 +56,8 @@ function sendMessage(text) {
   fetch(WEBHOOK_URL, {
     method: "POST",
     headers: {"Content-Type": "application/json"},
-    body: JSON.stringify({ message: text, lang: currentLang })
+    body: JSON.stringify({ message: text, lang: currentLang }),
+    mode: "cors"
   })
     .then(async resp => {
       let data;
@@ -83,6 +81,7 @@ function sendMessage(text) {
       }
     });
 }
+
 function addMessage(text, user = true) {
   const msgDiv = document.createElement("div");
   msgDiv.className = `chat-message message ${user ? "user" : "bot"}`;
@@ -90,11 +89,13 @@ function addMessage(text, user = true) {
   chatWindow.appendChild(msgDiv);
   scrollToBottom();
 }
+
 window.onload = () => {
   chatWindow.innerHTML = '';
   addMessage(langTexts[currentLang].botFirst, false);
   scrollToBottom();
 };
+
 document.getElementById('send-btn').onclick = function(e){
   e.preventDefault();
   const text = chatInput.value.trim();
@@ -102,6 +103,7 @@ document.getElementById('send-btn').onclick = function(e){
   sendMessage(text);
   return false;
 };
+
 chatInput.addEventListener('keydown', function(e){
   if(e.key === 'Enter' && !e.shiftKey) {
     e.preventDefault();
